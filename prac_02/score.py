@@ -28,4 +28,5 @@ def get_score_category(score):
     return score_category
 
 
-main()
+if __name__ == "__main__":
+    main()
