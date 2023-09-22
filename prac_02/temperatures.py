@@ -40,4 +40,5 @@ def celsius_to_fahrenheit(celsius):
     return fahrenheit
 
 
-main()
+if __name__ == "__main__":
+    main()
