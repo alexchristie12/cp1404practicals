@@ -14,7 +14,7 @@ MAX_DECREASE = 0.05  # 5%
 MIN_PRICE = 1
 MAX_PRICE = 100
 INITIAL_PRICE = 10.0
-OUTPUT_FILE = "../prac_02/stock_prices"
+OUTPUT_FILE = "stock_prices"
 
 price = INITIAL_PRICE
 number_of_days = 0
@@ -35,4 +35,5 @@ with open(OUTPUT_FILE, "w") as out_file:
 
         price *= (1 + price_change)
         number_of_days += 1
-        print(f"On day {number_of_days} the price is: ${price:,.2f}",file=out_file)
+        print(f"On day {number_of_days} the price is: ${price:,.2f}")
+        print(f"On day {number_of_days} the price is: ${price:,.2f}", file=out_file)
