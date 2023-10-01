@@ -2,7 +2,7 @@
 CP1404/CP5632 - Practical
 Answer the following questions:
 1. When will a ValueError occur?
-    - You will get  a value error a non integer input is selected.
+    - You will get  a value error a non integer, or non number input is selected.
 2. When will a ZeroDivisionError occur?
     - A zero division error will occur when the denominator is zero and the program attempts
         to divide by zero, the result of which is undefined.
