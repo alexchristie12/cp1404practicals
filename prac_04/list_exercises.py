@@ -11,6 +11,7 @@ def main():
                  'bob']
     check_username(usernames)
 
+
 # Part 1
 def get_numbers():
     """Gets 5 numbers from the user and stores them in a list"""
