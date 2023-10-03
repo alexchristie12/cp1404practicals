@@ -1,4 +1,4 @@
-"""CP1404 Practical 04: Generates a number of quick picks based on a user input"""
+"""CP1404 Practical 04"""
 import random
 
 LOW_NUMBER = 1
@@ -7,6 +7,7 @@ NUMBERS_PER_QUICK_PICK = 6
 
 
 def main():
+    """ Generates a number of quick picks based on a user input"""
     number_of_quick_picks = int(input("How many quick picks? "))
     for i in range(number_of_quick_picks):
         quick_pick = generate_quick_pick(NUMBERS_PER_QUICK_PICK)
@@ -14,6 +15,7 @@ def main():
 
 
 def generate_quick_pick(numbers_per_quick_pick):
+    """Generates an individual quick pick"""
     quick_pick = []
     for j in range(numbers_per_quick_pick):
         number = random.randint(LOW_NUMBER, HIGH_NUMBER)
@@ -25,6 +27,7 @@ def generate_quick_pick(numbers_per_quick_pick):
 
 
 def print_quick_pick(quick_pick):
+    """Prints quick pick"""
     max_length = len(str(HIGH_NUMBER))
     print(" ".join([f"{number:{max_length}}" for number in quick_pick]))
 
