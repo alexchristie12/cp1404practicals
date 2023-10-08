@@ -20,7 +20,7 @@ def get_numbers():
         valid_input = False
         while not valid_input:
             try:
-                number = int(input("Number: "))
+                number = float(input("Number: "))
                 numbers.append(number)
                 valid_input = True
             except ValueError:
