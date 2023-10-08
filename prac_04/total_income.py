@@ -2,6 +2,7 @@
 CP1404/CP5632 Practical
 Starter code for cumulative total income program
 """
+import math
 
 
 def main():
@@ -12,17 +13,23 @@ def main():
     for month in range(1, number_of_months + 1):
         income = float(input(f"Enter income for month {month}: "))
         incomes.append(income)
+    total_earnings = calculate_cumulative_income(incomes)
+    print_report(incomes, total_earnings, number_of_months)
 
-    print_report(incomes, number_of_months)
 
-
-def print_report(incomes, number_of_months):
+def print_report(incomes, total_earnings, number_of_months):
     print("\nIncome Report\n-------------")
-    total = 0
     for month in range(1, number_of_months + 1):
         income = incomes[month - 1]
-        total += income
-        print("Month {:2} - Income: ${:10.2f} Total: ${:10.2f}".format(month, income, total))
+        total_earning = total_earnings[month - 1]
+        print(f"Month {month:2} - Income: #{income:10.2f} Total: ${total_earning:10.2f}")
+
+
+def calculate_cumulative_income(incomes: list) -> list:
+    totals = []
+    for i in range(1, len(incomes) + 1):
+        totals.append(sum(incomes[:i]))
+    return totals
 
 
 main()
