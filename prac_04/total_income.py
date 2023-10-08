@@ -17,7 +17,7 @@ def main():
     print_report(incomes, total_earnings, number_of_months)
 
 
-def print_report(incomes, total_earnings, number_of_months):
+def print_report(incomes: list, total_earnings: list, number_of_months: int) -> None:
     print("\nIncome Report\n-------------")
     for month in range(1, number_of_months + 1):
         income = incomes[month - 1]
