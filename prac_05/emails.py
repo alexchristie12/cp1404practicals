@@ -1,7 +1,7 @@
 """
 CP1404 Practical 05: Emails
 Estimated Time: 20 minutes
-Actual Time:
+Actual Time: 26 minutes
 """
 
 
