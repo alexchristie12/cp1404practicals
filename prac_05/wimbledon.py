@@ -20,10 +20,12 @@ def main():
 
 
 def update_countries(countries_with_wins, data):
+    """When a new country wins a Wimbledon, add it to the set."""
     countries_with_wins.add(data[1])
 
 
 def update_champions(champion_to_win, data):
+    """Updates log of winners and their number of Wimbledon wins."""
     try:
         champion_to_win[data[2]] += 1
     except KeyError:
@@ -31,6 +33,7 @@ def update_champions(champion_to_win, data):
 
 
 def print_report(champion_to_win: dict, countries_with_wins: set) -> None:
+    """Prints a Report with champions and wins, and countries with wins."""
     print(f"Wimbledon Champions:")
     for champion in champion_to_win:
         print(f"{champion} {champion_to_win[champion]}")
