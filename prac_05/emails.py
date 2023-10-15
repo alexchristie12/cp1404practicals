@@ -6,6 +6,7 @@ Actual Time: 26 minutes
 
 
 def main():
+    """Stores emails to a user's Name"""
     email_to_name = {}
     email = input("Email: ")
     while email != "":
@@ -21,6 +22,7 @@ def main():
 
 
 def extract_name(email):
+    """Extracts name from email"""
     email_name = email.split('@')[0]
     return " ".join([name.title() for name in email_name.split(".")])
 
