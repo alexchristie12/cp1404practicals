@@ -14,19 +14,15 @@ def main():
         if yes_no_input == 'Y' or yes_no_input == '':
             email_to_name[email] = name
         else:
-            name = input("Name: ")
-            email_to_name[email] = name
+            email_to_name[email] = input("Name: ")
         email = input("Email: ")
     for email, name in email_to_name.items():
         print(f"{name} ({email})")
 
 
 def extract_name(email):
-    name = email.split('@')[0]
-    names = name.split(".")
-    names = [name.title() for name in names]
-    name = " ".join(names)
-    return name
+    email_name = email.split('@')[0]
+    return " ".join([name.title() for name in email_name.split(".")])
 
 
 if __name__ == "__main__":
