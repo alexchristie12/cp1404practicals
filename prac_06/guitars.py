@@ -8,21 +8,12 @@ def main():
     guitars = []
     print("My guitars!")
     name = input("Name: ")
-    if name == "":
-        return
-    year = int(input("Year: "))
-    cost = float(input("Cost: "))
-    new_guitar = Guitar(name, year, cost)
-    print(f"{name} ({year}) : ${cost:.2f} added.")
-    guitars.append(new_guitar)
     while name != "":
-        name = input("Name: ")
-        if name == "":
-            break
         year = int(input("Year: "))
         cost = float(input("Cost: "))
         guitars.append(Guitar(name, year, cost))
         print(f"{name} ({year}) : ${cost:.2f} added.")
+        name = input("Name: ")
     for i, guitar in enumerate(guitars, 1):
         if guitar.is_vintage(2023):
             vintage_string = " (vintage)"
