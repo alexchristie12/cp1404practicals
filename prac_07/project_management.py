@@ -3,6 +3,8 @@ import datetime
 from project import Project
 
 FILENAME = "projects.txt"
+
+
 def main():
     """Program that manages a system of projects."""
     # TODO: Maybe I should load initial files from projects.txt
@@ -29,7 +31,7 @@ def main():
             pass
         elif user_input == "A":
             # Add new project to system
-            pass
+            add_project(projects)
         elif user_input == "U":
             # Update a preexisting project
             pass
@@ -98,7 +100,20 @@ def display_projects(projects: list) -> None:
         print(f"\t{project}")
 
 
-def add_project(projects: list) -> list:
+def add_project(projects: list):
     """Add a new project to the system."""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    # Handle Date time stuff
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost Estimate: $"))
+    percentage_completion = int(input("Percent complete: "))
+    new_project = Project(name, start_date, priority, cost_estimate, percentage_completion)
+    projects.append(new_project)
+
+
+def update_project(projects: list):
+    """Updates a projects priority and/or completion percentage."""
 
 
