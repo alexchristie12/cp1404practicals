@@ -1,42 +1,49 @@
-"""CP1404 Prac07: Project Mangement Task"""
+"""CP1404 Prac07: Project Management Task
+Estimated Time: 3 hours
+Actual Time   :
+"""
 import datetime
+from datetime import date
 from project import Project
 
 FILENAME = "projects.txt"
 
 
+# TODO: Add in date filtering function
+# Tomorrow I need to ask Lindsay about the filtering function. After this I should be good
+# TODO: Add in error handling
+
 def main():
     """Program that manages a system of projects."""
-    # TODO: Maybe I should load initial files from projects.txt
+    # Load initial files from "projects.txt"
     projects = load_projects(FILENAME)
-    # TODO: Print menu
+    for project in projects:
+        print(project)
     print_menu()
-    # TODO: Get User Input
     user_input = get_user_input()
     while user_input != "Q":
         if user_input == "L":
-            # Handle Loading the Projects
+            # Handle Loading new Projects
             projects = load_projects()
-            pass
         elif user_input == "S":
             # Save Projects to file
             save_projects(projects)
-            pass
         elif user_input == "D":
             # Display Projects
             display_projects(projects)
         elif user_input == "F":
             # Filter the projects by date
-            # Need to work out datetime stuff first
             pass
         elif user_input == "A":
             # Add new project to system
             add_project(projects)
         elif user_input == "U":
             # Update a preexisting project
-            pass
+            update_project(projects)
+        else:
+            print("Invalid User Input!")
         print_menu()
-    # TODO: Handle User Input
+        user_input = get_user_input()
 
 
 def print_menu() -> None:
@@ -64,7 +71,7 @@ def load_projects(filename="") -> list:
         for line in in_file:
             parts = line.strip().split("\t")
             project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
-            projects.append(projects)
+            projects.append(project)
     return projects
 
 
@@ -81,6 +88,7 @@ def get_filename() -> str:
 
 
 def save_projects(projects: list) -> None:
+    """Saves Projects back into .txt file"""
     with open(FILENAME, 'w') as out_file:
         for project in projects:
             out_file.write(project.storage_format())
@@ -92,6 +100,8 @@ def display_projects(projects: list) -> None:
     # Need to group the projects
     incomplete_projects = [project for project in projects if project.completion_percentage != 100]
     complete_projects = [project for project in projects if project.completion_percentage == 100]
+    incomplete_projects.sort()
+    complete_projects.sort()
     print("Incomplete Projects:")
     for project in incomplete_projects:
         print(f"\t{project}")
@@ -115,5 +125,34 @@ def add_project(projects: list):
 
 def update_project(projects: list):
     """Updates a projects priority and/or completion percentage."""
+    # Print Projects with number (0->N)
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+    project_choice = int(input("Project Choice: "))
+    # Need to handle invalid input
+    # Update relevant parts
+    updated_project = projects[project_choice]
+    new_completion_percentage = input("New Percentage: ")
+    if new_completion_percentage != "":
+        updated_project.percentage_completion = int(new_completion_percentage)
+    new_priority = input("New Priority")
+    if new_priority != "":
+        updated_project.priority = int(new_priority)
+    projects[project_choice] = updated_project
 
 
+def filter_projects(projects: list):
+    """Filters projects by start date from a specific date"""
+    valid_input = False
+    while not valid_input:
+        try:
+            input_start_date = input("Show projects that start after date (dd/mm/yyyy): ")
+            start_date = datetime.datetime.strptime(input_start_date, "%d/%m/%Y")
+            valid_input = True
+        except ValueError:
+            print("Date entered is either incorrect format or invalid.")
+    # Get projects that are after a particular date, and then sort them based on date
+
+
+if __name__ == "__main__":
+    main()
