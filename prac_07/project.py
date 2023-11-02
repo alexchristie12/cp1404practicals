@@ -1,21 +1,29 @@
 """CP1404 Practical 07: Project Mangement Task"""
-
+import datetime
 
 class Project:
     """A Project object."""
 
-    def __init__(self, name="", start_date="", priority=1, cost_estimate=0.00, completion_percentage=0):
+    def __init__(self, name="", start_date="01/01/2000", priority=1, cost_estimate=0.00, completion_percentage=0):
         self.name = name
-        self.start_date = start_date  # May want this to be with datetime object
+        # self.start_date = start_date
+        try:
+            full_date = datetime.datetime.strptime(start_date, "%d/%m/%Y")
+            self.start_date = full_date.date()
+        except ValueError:
+            # If the formatting fails, just use the current date
+            self.start_date = datetime.date.today()
         self.priority = priority
         self.cost_estimate = cost_estimate
         self.completion_percentage = completion_percentage
 
     def __str__(self):
-        return f"{self.name}, start: {self.start_date}, priority: {self.priority}, estimate: ${self.cost_estimate:,.2f}, completion: {self.completion_percentage}%"
+        date_string = self.start_date.strftime("%d/%m/%Y")
+        return f"{self.name}, start: {date_string}, priority: {self.priority}, estimate: ${self.cost_estimate:,.2f}, completion: {self.completion_percentage}%"
 
     def __lt__(self, other):
         return self.priority < other.priority
 
-    def format_for_storage(self):
-        return f"{self.name}\t{self.start_date}\t{self.priority}\t{self.cost_estimate:.1f}\t{self.completion_percentage}"
+    def storage_format(self):
+        date_string = self.start_date.strftime("%d/%m/%Y")
+        return f"{self.name}\t{date_string}\t{self.priority}\t{self.cost_estimate:.1f}\t{self.completion_percentage}\n"
