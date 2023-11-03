@@ -9,10 +9,6 @@ from project import Project
 FILENAME = "projects.txt"
 
 
-# TODO: Add in date filtering function
-# Tomorrow I need to ask Lindsay about the filtering function. After this I should be good
-# TODO: Add in error handling
-
 def main():
     """Program that manages a system of projects."""
     # Load initial files from "projects.txt"
@@ -44,6 +40,9 @@ def main():
             print("Invalid User Input!")
         print_menu()
         user_input = get_user_input()
+    # The user has requested to quit the program
+    save_projects(projects)
+    print("Thank you for using custom built project management software.")
 
 
 def print_menu() -> None:
@@ -61,18 +60,22 @@ def get_user_input() -> str:
 
 
 def load_projects(filename="") -> list:
-    """Loads projects from a .txt file."""
+    """Loads projects from a .txt file.
+        If no filename is specified as a parameter when it will get on from the user. """
     projects = []
     if filename == "":
         filename = get_filename()
-    with open(filename, 'r') as in_file:
-        # Consume Header
-        in_file.readline()
-        for line in in_file:
-            parts = line.strip().split("\t")
-            project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
-            projects.append(project)
-    return projects
+    try:
+        with open(filename, 'r') as in_file:
+            # Consume Header
+            in_file.readline()
+            for line in in_file:
+                parts = line.strip().split("\t")
+                project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
+                projects.append(project)
+        return projects
+    except FileNotFoundError:
+        print("File could not be loaded")
 
 
 def get_filename() -> str:
@@ -114,7 +117,7 @@ def add_project(projects: list):
     """Add a new project to the system."""
     print("Let's add a new project")
     name = input("Name: ")
-    start_date = input("Start date (dd/mm/yy): ")
+    start_date = input("Start date (dd/mm/yyyy): ")
     # Handle Date time stuff
     priority = int(input("Priority: "))
     cost_estimate = float(input("Cost Estimate: $"))
@@ -131,14 +134,17 @@ def update_project(projects: list):
     project_choice = int(input("Project Choice: "))
     # Need to handle invalid input
     # Update relevant parts
-    updated_project = projects[project_choice]
-    new_completion_percentage = input("New Percentage: ")
-    if new_completion_percentage != "":
-        updated_project.percentage_completion = int(new_completion_percentage)
-    new_priority = input("New Priority")
-    if new_priority != "":
-        updated_project.priority = int(new_priority)
-    projects[project_choice] = updated_project
+    try:
+        updated_project = projects[project_choice]
+        new_completion_percentage = input("New Percentage: ")
+        if new_completion_percentage != "":
+            updated_project.percentage_completion = int(new_completion_percentage)
+        new_priority = input("New Priority")
+        if new_priority != "":
+            updated_project.priority = int(new_priority)
+        projects[project_choice] = updated_project
+    except IndexError:
+        print("Invalid project number entered")
 
 
 def filter_projects(projects: list):
