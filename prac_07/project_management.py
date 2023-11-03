@@ -3,7 +3,7 @@ Estimated Time: 3 hours
 Actual Time   :
 """
 import datetime
-from datetime import date
+from operator import attrgetter
 from project import Project
 
 FILENAME = "projects.txt"
@@ -33,7 +33,7 @@ def main():
             display_projects(projects)
         elif user_input == "F":
             # Filter the projects by date
-            pass
+            filter_projects(projects)
         elif user_input == "A":
             # Add new project to system
             add_project(projects)
@@ -151,7 +151,12 @@ def filter_projects(projects: list):
             valid_input = True
         except ValueError:
             print("Date entered is either incorrect format or invalid.")
+
     # Get projects that are after a particular date, and then sort them based on date
+    projects_after_start_date = [project for project in projects if project.start_date >= start_date.date()]
+    sorted_projects = sorted(projects_after_start_date, key=attrgetter('start_date'))
+    for project in sorted_projects:
+        print(project)
 
 
 if __name__ == "__main__":
