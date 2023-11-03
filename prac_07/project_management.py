@@ -1,6 +1,6 @@
 """CP1404 Prac07: Project Management Task
 Estimated Time: 3 hours
-Actual Time   :
+Actual Time   : 160 minutes
 """
 import datetime
 from operator import attrgetter
