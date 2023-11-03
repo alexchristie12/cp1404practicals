@@ -1,4 +1,7 @@
-"""CP1404 Practical 07 Guitar Exercise."""
+"""CP1404 Practical 07 Guitar Exercise.
+Time Estimate : 10 minutes
+Actual Time : 9 minutes
+"""
 from guitar import Guitar
 
 
