@@ -1,3 +1,8 @@
+"""CP1404 Practical 08 Box Layout example
+Time Estimate: 10 minutes
+Time Actual: 8 minutes
+"""
+
 from kivy.app import App
 from kivy.lang import Builder
 
