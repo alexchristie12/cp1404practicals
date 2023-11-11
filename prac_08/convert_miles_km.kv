@@ -7,6 +7,7 @@ BoxLayout:
             size_hint_x: 0.75
             font_size: 44
             multiline: False
+            on_text: app.handle_new_value()
         BoxLayout:
             orientation: 'vertical'
             size_hint_x: 0.25
@@ -19,12 +20,13 @@ BoxLayout:
                 id: down_button
                 text: "Down"
                 font_size: 36
-                on_press: app.handle_increment(-1)
-    Button:
-        id: convert_button
-        text: 'Convert miles to km'
-        font_size: 36
-        on_press: app.handle_new_value()
+                on_press: app.handle_increment(1)
+    # I am keeping this part in for marking purposes.
+#    Button:
+#        id: convert_button
+#        text: 'Convert miles to km'
+#        font_size: 36
+#        on_press: app.handle_new_value()
     Label:
         id: output_label
         background_color: (0, 0, 0, 1)
