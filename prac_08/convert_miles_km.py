@@ -27,8 +27,11 @@ class MilesToKmApp(App):
         self.root.ids.output_label.text = f"{kilometres}"
 
     def get_valid_input(self):
-        new_value = float(self.root.ids.miles_text_input.text)
-        return new_value
+        try:
+            new_value = float(self.root.ids.miles_text_input.text)
+            return new_value
+        except ValueError:
+            return 0.0
 
     def handle_increment(self, increment):
         value = self.get_valid_input() + increment
