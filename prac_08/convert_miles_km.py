@@ -1,7 +1,7 @@
 """CP1404 Practical 08
 Converting Miles to Kilometers Task
 Estimated Time: 30 minutes
-Actual Time:
+Actual Time: 42 minutes
 """
 
 from kivy.app import App
