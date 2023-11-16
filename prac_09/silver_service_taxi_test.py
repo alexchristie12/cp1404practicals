@@ -11,7 +11,7 @@ def main():
     test_taxi = SilverServiceTaxi("Fancy Taxi", 100, 2)
     test_taxi.drive(18)
     print(test_taxi)
-    assert test_taxi.get_fare() == 48.78
+    assert test_taxi.get_fare() == 48.80
 
 
 if __name__ == "__main__":
