@@ -12,7 +12,7 @@ class UnreliableCar(Car):
 
     def __init__(self, name: str, fuel: int, reliability: float):
         """Initialise the Unreliable Car."""
-        super().__init__(fuel, name)
+        super().__init__(name, fuel)
         self.reliability = reliability
 
     def drive(self, distance):

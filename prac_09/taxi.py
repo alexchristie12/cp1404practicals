@@ -12,7 +12,7 @@ class Taxi(Car):
 
     def __init__(self, name, fuel):
         """Initialise a Taxi instance, based on parent class Car."""
-        super().__init__(fuel, name)
+        super().__init__(name, fuel)
         self.current_fare_distance = 0
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Taxi(Car):
         return self.price_per_km * self.current_fare_distance
 
     def start_fare(self):
-        """Begin a new fare."""
+        """Begina new fare."""
         self.current_fare_distance = 0
 
     def drive(self, distance):
