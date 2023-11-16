@@ -1,7 +1,7 @@
 """
 CP1404 Practical 09 - Taxi Exercise
 Estimated Time: 10 minutes
-Actual Time: 
+Actual Time: 9 minutes 
 """
 
 from taxi import Taxi
@@ -10,7 +10,7 @@ from taxi import Taxi
 def main():
     """Main Program for taxi testing program"""
     # Initialise Taxi
-    my_taxi = Taxi("Prius 1", 100, 1.23)
+    my_taxi = Taxi("Prius 1", 100)
     # Drive the Taxi 40km
     my_taxi.drive(40)
     print(my_taxi)
