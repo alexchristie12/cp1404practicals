@@ -15,6 +15,9 @@ class SilverServiceTaxi(Taxi):
         super().__init__(name, fuel)
         self.price_per_km = Taxi.price_per_km * fanciness
 
+    def __str__(self):
+        return f"{super().__str__()} plus flagfall of ${self.flagfall}."
+
     def get_fare(self):
         """Return the price for the current fare."""
         return self.price_per_km * self.current_fare_distance + self.flagfall
