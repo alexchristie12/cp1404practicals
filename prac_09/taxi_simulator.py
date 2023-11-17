@@ -1,7 +1,7 @@
 """
 CP1404 Practical 09 - Taxi Simulator Exercise
 Estimated Time: 60 minutes
-Actual Time:
+Actual Time: 80 minutes
 """
 
 from prac_09.taxi import Taxi
