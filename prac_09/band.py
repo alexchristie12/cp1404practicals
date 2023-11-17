@@ -1,4 +1,8 @@
-"""CP1404 Practical 09 - Band Class"""
+"""
+CP1404 Practical 09 - Band Class
+Estimated Time: 10 minutes
+Actual Time: 11 minutes
+"""
 
 
 class Band:
