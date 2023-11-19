@@ -9,9 +9,9 @@ from prac_09.unreliable_car import UnreliableCar
 
 # For this test the system a bunch of times and get an estimate, also test basic functionality
 def main():
-    test_car = UnreliableCar(
-        "Rust Bucket", 100000, 50
-    )  # From here we would expect a success 100 times
+    """Test for Unreliable Car class"""
+    test_car = UnreliableCar("Rust Bucket", 100000, 50)
+    # From here we would expect a success 50% of the time
     # Check Initial Attributes
     assert test_car.name == "Rust Bucket"
     assert test_car.fuel == 100000

@@ -45,10 +45,12 @@ def main():
 
 
 def print_menu() -> None:
+    """Prints a menu selection."""
     print("q)uit, c)hoose, d)rive")
 
 
 def choose_taxi(taxis: list):
+    """Allows user to select a taxi."""
     print("Taxis available:")
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
@@ -66,6 +68,7 @@ def choose_taxi(taxis: list):
 
 
 def drive_taxi(current_taxi, total_fare):
+    """Drives the taxi a certain distance."""
     if current_taxi is None:
         print("You need to chosse a taxi before you drive")
     else:

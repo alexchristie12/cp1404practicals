@@ -25,7 +25,7 @@ class Taxi(Car):
         return round(fare_cost, 1)
 
     def start_fare(self):
-        """Begina new fare."""
+        """Begin a new fare."""
         self.current_fare_distance = 0
 
     def drive(self, distance):
