@@ -18,6 +18,7 @@ def main():
             print("You have selected a Disambiguation, select the one that you really want")
             search_result = handle_search_results(disambiguation_options.options)
             wiki_page = wiki.page(search_result, auto_suggest=False)
+        # Don't need to handle PageErrors as they are impossible with this implementation
         print(wiki_page.title)
         print(wiki_page.summary)  # I don't like how it is all one line
         print(wiki_page.url)
