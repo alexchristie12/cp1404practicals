@@ -1,7 +1,7 @@
 """
 CP1404 Practical 10: Wikipedia API
 Estimated Time: 30 minutes
-Actual Time:
+Actual Time: 40 minutes
 """
 import wikipedia as wiki
 
@@ -10,20 +10,22 @@ def main():
     """Main program body for wikipedia exercise."""
     search_prompt = input("\nEnter a page title or search phrase: ")
     while search_prompt != "":
-        results = wiki.search(search_prompt)
-        result = handle_search_prompts(results)
+        search_results = wiki.search(search_prompt)
+        search_result = handle_search_results(search_results)
         try:
-            wiki_page = wiki.page(result, auto_suggest=False)
-            print(wiki_page.title)
-            print(wiki_page.summary)  # I don't like how it is all one line
-            print(wiki_page.url)
-        except wiki.DisambiguationError:
-            print("You have selected a Disambiguation")
+            wiki_page = wiki.page(search_result, auto_suggest=False)
+        except wiki.DisambiguationError as disambiguation_options:
+            print("You have selected a Disambiguation, select the one that you really want")
+            search_result = handle_search_results(disambiguation_options.options)
+            wiki_page = wiki.page(search_result, auto_suggest=False)
+        print(wiki_page.title)
+        print(wiki_page.summary)  # I don't like how it is all one line
+        print(wiki_page.url)
+
         search_prompt = input("Enter a page title or search phrase: ")
 
 
-
-def handle_search_prompts(search_results: list) -> str:
+def handle_search_results(search_results: list) -> str:
     """Takes in a list of results from the wikipedia API and prompts the user to select an input"""
     selected_result = ""
     valid_selection = False
