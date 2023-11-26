@@ -9,10 +9,8 @@ from prac_06.car import Car
 
 def repeat_string(s, n):
     """Repeat string s, n times, with spaces in between."""
-    s += " "
-    s *= n
-    s = s[:-1]
-    return s
+    string_list = [s for i in range(n)]
+    return " ".join(string_list)
 
 
 def is_long_word(word, length=5):
@@ -25,7 +23,22 @@ def is_long_word(word, length=5):
     >>> is_long_word("Python", 6)
     True
     """
-    return len(word) > length
+    return len(word) >= length
+
+def format_sentence(sentence: str) -> str:
+    """
+    Format a sentence to start with an uppercase letter and end with a full stop.
+    >>> format_sentence("hello")
+    'Hello.'
+    >>> format_sentence("It is an ex parrot.")
+    'It is an ex parrot.'
+    >>> format_sentence("this is a sentence")
+    'This is a sentence.'
+    """
+    sentence = sentence.capitalize()
+    if sentence[-1] != ".":
+        sentence += "."
+    return sentence
 
 
 def run_tests():
@@ -48,14 +61,16 @@ def run_tests():
     # Note that Car's __init__ function sets the fuel in one of two ways:
     # using the value passed in or the default
     # You should test both of these
+    assert test_car.fuel == 0
     test_car = Car(fuel=10)
+    assert test_car.fuel == 10
 
 
 run_tests()
 
 # TODO: 3. Uncomment the following line and run the doctests
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
-# doctest.testmod()
+doctest.testmod()
 
 # TODO: 4. Fix the failing is_long_word function
 # (don't change the tests, change the function!)
