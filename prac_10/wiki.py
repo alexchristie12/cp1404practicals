@@ -8,13 +8,19 @@ import wikipedia as wiki
 
 def main():
     """Main program body for wikipedia exercise."""
-    search_prompt = input("Enter a page title or search phrase: ")
-    results = wiki.search(search_prompt)
-    result = handle_search_prompts(results)
-    wiki_page = wiki.page(result, auto_suggest=False)
-    print(wiki_page.title)
-    print(wiki_page.summary)  # I don't like how it is all one line
-    print(wiki_page.url)
+    search_prompt = input("\nEnter a page title or search phrase: ")
+    while search_prompt != "":
+        results = wiki.search(search_prompt)
+        result = handle_search_prompts(results)
+        try:
+            wiki_page = wiki.page(result, auto_suggest=False)
+            print(wiki_page.title)
+            print(wiki_page.summary)  # I don't like how it is all one line
+            print(wiki_page.url)
+        except wiki.DisambiguationError:
+            print("You have selected a Disambiguation")
+        search_prompt = input("Enter a page title or search phrase: ")
+
 
 
 def handle_search_prompts(search_results: list) -> str:
